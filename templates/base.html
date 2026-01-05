@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site de combate e conscientização sobre violência doméstica">
+    <title>{% block title %}Combate à Violência Doméstica{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-heart"></i> Não Se Cale
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <i class="fas fa-home"></i> Início
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sobre') }}">
+                            <i class="fas fa-info-circle"></i> Sobre
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('tipos_violencia') }}">
+                            <i class="fas fa-exclamation-triangle"></i> Tipos de Violência
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('denuncia') }}">
+                            <i class="fas fa-phone-alt"></i> Como Denunciar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('rede_apoio') }}">
+                            <i class="fas fa-hands-helping"></i> Rede de Apoio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contato') }}">
+                            <i class="fas fa-envelope"></i> Contato
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner de Emergência -->
+    <div class="alert alert-danger text-center mb-0 py-2" role="alert">
+        <strong><i class="fas fa-exclamation-circle"></i> EMERGÊNCIA?</strong> 
+        Ligue 180 (Central de Atendimento à Mulher) ou 190 (Polícia Militar)
+    </div>
+
+    <!-- Mensagens Flash -->
+    <div class="container mt-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5><i class="fas fa-heart"></i> Não Se Cale</h5>
+                    <p class="small">Projeto de extensão universitária para combate à violência doméstica.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contatos Importantes</h5>
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-phone"></i> Central da Mulher: 180</li>
+                        <li><i class="fas fa-phone"></i> Polícia: 190</li>
+                        <li><i class="fas fa-phone"></i> Direitos Humanos: 100</li>
+                        <li><i class="fas fa-phone"></i> SAMU: 192</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Links Úteis</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="https://www.gov.br/mdh/pt-br/ligue180" target="_blank" class="text-white">Portal Ligue 180</a></li>
+                        <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/lei/l11340.htm" target="_blank" class="text-white">Lei Maria da Penha</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <p class="text-center mb-0 small">
+                © 2024 - Desenvolvido com <i class="fas fa-heart text-danger"></i> para salvar vidas
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JS Customizado -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

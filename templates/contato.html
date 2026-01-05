@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Contato - Combate à Violência Doméstica{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="text-center mb-4">Entre em Contato</h2>
+        <p class="text-center text-muted mb-4">
+            Envie sua mensagem de forma anônima. Não é necessário fornecer nome ou email.
+        </p>
+        
+        <div class="card shadow">
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('contato') }}">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome (opcional)</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Você pode deixar em branco">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email (opcional)</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com">
+                        <small class="form-text text-muted">Informe apenas se quiser receber resposta.</small>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="mensagem" class="form-label">Mensagem *</label>
+                        <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                    </div>
+                    
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-lock"></i> Sua privacidade é importante. As informações serão tratadas com confidencialidade.
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

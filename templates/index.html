@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Início - Combate à Violência Doméstica{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">Você Não Está Sozinha</h1>
+    <p class="lead">Informação, apoio e recursos para combater a violência doméstica</p>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Reconheça os Sinais</h5>
+                <p class="card-text">Aprenda a identificar os diferentes tipos de violência doméstica.</p>
+                <a href="{{ url_for('tipos_violencia') }}" class="btn btn-primary">Saiba Mais</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-phone-volume fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Denuncie</h5>
+                <p class="card-text">Guia completo de como e onde fazer denúncias de forma segura.</p>
+                <a href="{{ url_for('denuncia') }}" class="btn btn-success">Como Denunciar</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-users fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Rede de Apoio</h5>
+                <p class="card-text">Encontre recursos locais: delegacias, abrigos e assistência.</p>
+                <a href="{{ url_for('rede_apoio') }}" class="btn btn-info">Ver Recursos</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="card shadow">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">O que é Violência Doméstica?</h3>
+                <p>A violência doméstica é qualquer ação ou omissão que cause morte, lesão, sofrimento físico, sexual ou psicológico, dano moral ou patrimonial em relações íntimas de afeto, independentemente de gênero.</p>
+                <p class="mb-0">No Brasil, a <strong>Lei Maria da Penha (Lei 11.340/2006)</strong> protege as vítimas e pune os agressores. A violência pode acontecer com qualquer pessoa e denunciar é o primeiro passo para quebrar o ciclo.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
